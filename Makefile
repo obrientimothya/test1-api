@@ -10,7 +10,7 @@ run-local: _npm
 	NODE_VERSION=$(NODE_VERSION) \
 	COMMIT_SHA=$(COMMIT_SHA) \
 	APP_VERSION=$(APP_VERSION) \
-	$(RUNNER) --entrypoint "" node \
+	$(RUNNER) --service-ports --entrypoint "" node \
 	node app.js
 PHONY: run-local
 

@@ -73,6 +73,12 @@ To deploy the Kubernetes configuration locally, execute the following command:
 make kube-deploy
 ```
 
+To perform basic `replicas` scaling on the deployment, run:
+
+```
+make kube-scale REPLICAS=5
+```
+
 To destroy the Kube environment, run:
 
 ```

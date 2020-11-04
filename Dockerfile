@@ -3,13 +3,16 @@ ARG NODE_VERSION
 FROM node:${NODE_VERSION}
 
 # nginx
-RUN apt update
-RUN apt install -y nginx
-RUN rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache --update nginx
 
-WORKDIR /api
+WORKDIR /app
 
-COPY api/* /api/
+COPY package.json /app/package.json
+COPY app.js /app/app.js
+COPY config.js /app/config.js
+COPY api/routes/version.js /app/api/routes/version.js
+
+RUN ls -la
 
 # bundle all dependencies
 RUN npm install

@@ -1,0 +1,41 @@
+default:
+  image: docker.io/mybuildimage:1.0.0
+
+services:
+  - name: docker.io/docker:dind
+
+stages:
+  - test
+  - deploy-dev
+  - deploy-prod
+
+test-job:
+  stage: test
+  script:
+    - make test
+  rules:
+    - if: $CI_COMMIT_BRANCH != null
+    - if: $CI_MERGE_REQUEST_ID
+
+deploy-dev-job:
+  stage: deploy-dev
+  variables:
+    DOCKER_TOKEN: $DOCKER_TOKEN
+  script:
+    - make deploy
+  environment:
+    name: DEV
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_BRANCH == "development"
+
+deploy-prod-job:
+  stage: deploy-prod
+  script:
+    - make deploy-prod
+  variables:
+    DOCKER_TOKEN: $DOCKER_TOKEN
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+  environment:
+    name: PROD

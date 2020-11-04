@@ -1,5 +1,28 @@
 # test1-api
-Test 1 Simple Web API
+Test 1+2 Simple Web API with Kubernetes
+
+---
+
+## Tim's notes
+Things that could improve this app if it were destined for production.
+
+### Versioning
+Versioning was controlled with package.json and docker tags. This could be improved by incorporating CI automated verioning, git tagging and further automation to ensure each commit was versioned uniquely.
+
+### Risks and Improvements
+The following enhancements would help productionise the application:
+
+- Linting tools and automation via CI (such as Helm Lint, Hadolint, eslint, etc - ensure code is clean and free from errors on each commit)
+- More tests (the more the better generally, refactoring code to better support unit testing, producing a coverage report to identify gaps, deploying docker images to ensure they run before entering DEV/PROD and any other tests that ensure functionality is as promised)
+- Better code error handling (like tests, the more error handling the better to ensure the app handles bad situations as gracefully as possible. Error reporting also helps to detect breaches, bugs, etc for a better user experience in the long run)
+- Automated sec scanning of Docker images and node libs. Minimise bugs in 3rd-party code, patch security holes, etc.
+- Expand the Kubernetes offering. Use Helm/similar to enable variable injection and DRY up the Yaml, leads to cleaner code and more flexibility for automated deployment and scaling as the number of services grow.
+- Add application monitoring to detect errors and bad actors
+- Automate test reports in CI to help identify errors and track test performance over time.
+
+## END Tim's Notes
+
+---
 
 ## Development Prerequisites
 To test and develop the API locally, the following tools are required:

@@ -25,13 +25,13 @@ make test
 ```
 
 ## Build and Publish an API Docker Image
-To build a new version of a Docker image (with all API code and required modules), execute the following command:
+To build a new (local) version of a Docker image (with all API code and required modules), execute the following command:
 
 ```
 make build
 ```
 
-Images will be tagged with a development version field from `package.json`, eg. test1-api:1.0.0-dev
+Images will be tagged with a development version field from `package.json`, eg. test1-api:1.0.0-DEV
 
 To publish the current image to Dockerhub, run the following command:
 (Note, this requires a valid Dockerhub login and project rights when running locally)
@@ -58,6 +58,26 @@ To generate a new PROD release (from a final development version):
 - Merge the request into `master`
 - Pipeline will build and publish the release (eg. 1.0.0)
 - Image is ready for release to production environment (kubernetes, etc)
+
+## Kubernetes Deployment
+An example Kubernetes deployment exists in the `./kube` folder.
+The deployment creates a deployment in the default namespace with the folloing resources:
+
+- 3 replicas
+- a configmap with environment values
+- a service that exposes a load balancer across the pods on port 3000
+
+To deploy the Kubernetes configuration locally, execute the following command:
+
+```
+make kube-deploy
+```
+
+To destroy the Kube environment, run:
+
+```
+make kube-destroy
+```
 
 ## Contributing
 To contribute to the code for API, please follow these guidelines:

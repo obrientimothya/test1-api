@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapi
+  labels:
+    app: testapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: testapi
+  template:
+    metadata:
+      labels:
+        app: testapi
+    spec:
+      containers:
+        - name: testapi
+          image: testapi:1.0.0
+          env:
+            - name: APP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: testapi-cm
+                  key: APP_VERSION
+            - name: COMMIT_SHA
+              valueFrom:
+                configMapKeyRef:
+                  name: testapi-cm
+                  key: COMMIT_SHA
+

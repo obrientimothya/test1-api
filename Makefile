@@ -6,14 +6,24 @@ APP_VERSION=$(shell NODE_VERSION=$(NODE_VERSION) docker-compose run --rm --entry
 # run the API in a local
 # docker container for testing
 # and development
-run-local: _npm
+run: _npm
 	NODE_VERSION=$(NODE_VERSION) \
 	$(RUNNER) --service-ports --entrypoint "" \
 	-e APP_VERSION=$(APP_VERSION) \
 	-e COMMIT_SHA=$(COMMIT_SHA) \
 	node \
 	node app.js
-PHONY: run-local
+PHONY: run
+
+# run mocha tests
+test: _npm
+	NODE_VERSION=$(NODE_VERSION) \
+	$(RUNNER) --service-ports --entrypoint "" \
+	-e APP_VERSION=$(APP_VERSION) \
+	-e COMMIT_SHA=$(COMMIT_SHA) \
+	node \
+	npm test
+PHONY: test
 
 # helpers
 

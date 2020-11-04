@@ -19,3 +19,5 @@ app.use('/version', version)
 app.listen(config.app.port, () => {
     console.log('API listening on port ' + config.app.port)
 })
+
+module.exports = app

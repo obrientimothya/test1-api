@@ -38,15 +38,22 @@ build:
 	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):$(APP_VERSION)
 PHONY: build
 
+publish:
+	# this doesnt really push to docker repo
+	# however, would be a docker login with $$DOCKER_TOKEN or similar,
+	# then add any requried Tags, then `docker push`
+	echo "pushing to docker repo"
+PHONY: deploy-dev
+
 deploy-dev: build
-	# this doesnt really push to dockerhub (time was running out!)
-	# however, would be a docker login with $DOCKER_TOKEN
+	# this doesnt really push to docker repo
+	# however, would be a docker login with $$DOCKER_TOKEN or similar,
 	# then add any requried Tags, then `docker push`
 	echo "pushing to docker hub DEV"
 PHONY: deploy-dev
 
 deploy-prod: build
-	# again this would push to dockerhub in same
+	# again this would push to docker repo in same
 	# manner, except it will push a prod release Tag
 	echo "pushing to docker hub PROD"
 PHONY: deploy-prod

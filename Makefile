@@ -8,9 +8,10 @@ APP_VERSION=$(shell NODE_VERSION=$(NODE_VERSION) docker-compose run --rm --entry
 # and development
 run-local: _npm
 	NODE_VERSION=$(NODE_VERSION) \
-	COMMIT_SHA=$(COMMIT_SHA) \
-	APP_VERSION=$(APP_VERSION) \
-	$(RUNNER) --service-ports --entrypoint "" node \
+	$(RUNNER) --service-ports --entrypoint "" \
+	-e APP_VERSION=$(APP_VERSION) \
+	-e COMMIT_SHA=$(COMMIT_SHA) \
+	node \
 	node app.js
 PHONY: run-local
 
@@ -24,3 +25,11 @@ _npm:
 	$(RUNNER) --entrypoint "" node \
 	npm install
 PHONY: _install-local
+
+# get a node shell
+# for running custom developer
+# commands
+_shell:
+	NODE_VERSION=$(NODE_VERSION) \
+	$(RUNNER) --entrypoint "" node /bin/sh
+PHONY: _shell

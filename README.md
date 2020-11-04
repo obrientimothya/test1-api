@@ -84,7 +84,7 @@ To generate a new PROD release (from a final development version):
 
 ## Kubernetes Deployment
 An example Kubernetes deployment exists in the `./kube` folder.
-The deployment creates a deployment in the default namespace with the folloing resources:
+The deployment creates a deployment in the `technical-test` namespace with the folloing resources:
 
 - 3 replicas (adjust to scale the deployment in an elastic manner)
 - a configmap with environment values

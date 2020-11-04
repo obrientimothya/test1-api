@@ -59,19 +59,21 @@ deploy-prod: build
 PHONY: deploy-prod
 
 kube-deploy:
+	kubectl apply -f kube/testapi-ns.yml
 	kubectl apply -f kube/testapi-cm.yml
 	kubectl apply -f kube/testapi-deploy.yml
 	kubectl apply -f kube/testapi-service.yml
 PHONY: kube-deploy
 
 kube-scale:
-	kubectl scale --replicas=$(REPLICAS) deployment/testapi
+	kubectl scale --namespace=technical-test --replicas=$(REPLICAS) deployment/testapi
 PHONY: kube-scale
 
 kube-destroy:
-	kubectl delete cm testapi-cm
-	kubectl delete deploy testapi
-	kubectl delete svc testapi-service
+	kubectl delete --namespace=technical-test cm testapi-cm
+	kubectl delete --namespace=technical-test deploy testapi
+	kubectl delete --namespace=technical-test svc testapi-service
+	kubectl delete ns technical-test
 PHONY: kube-destroy
 
 # helpers

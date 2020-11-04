@@ -37,7 +37,7 @@ Devlopment and deployment tools follow the 3musketeers pattern - see [3musketeer
 To run the API locally (within a Docker container) execute the following command:
 
 ```
-make run-local
+make run
 ```
 
 ## Test Suite

@@ -17,6 +17,13 @@ To run the API locally (within a Docker container) execute the following command
 make run-local
 ```
 
+## Test Suite
+To run the Mocha-Chai test suite for API, execute the following command:
+
+```
+make test
+```
+
 ## Build and Publish an API Docker Image
 To build a new version of a Docker image (with all API code and required modules), execute the following command:
 
@@ -52,3 +59,12 @@ To generate a new PROD release (from a final development version):
 - Pipeline will build and publish the release (eg. 1.0.0)
 - Image is ready for release to production environment (kubernetes, etc)
 
+## Contributing
+To contribute to the code for API, please follow these guidelines:
+
+- Git clone the latest `development` branch
+- Create a local branch for your changes `git checkout -b yourbranch`
+- Push your local branch upstream eg. `git push -u origin yourbranch`
+- Raise a Merge Request to `development` from your branch
+- Ensure your build CI pipeline is passing
+- Request merge approval for your code to be accepted into the main development branch.

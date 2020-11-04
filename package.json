@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Test 1 Basic REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obrientimothya/test1-api.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "obrien.timothy.a@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/obrientimothya/test1-api/issues"
+  },
+  "homepage": "https://github.com/obrientimothya/test1-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

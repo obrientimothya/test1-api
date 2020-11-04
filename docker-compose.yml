@@ -5,6 +5,8 @@ services:
   node:
     image: "docker.io/node:${NODE_VERSION}"
     working_dir: /app
+    volumes:
+      - ${PWD}:/app:z
   api:
     build:
       context: .

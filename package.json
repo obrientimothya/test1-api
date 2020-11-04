@@ -1,0 +1,29 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Test 1 Basic REST API",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --timeout 5000 --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obrientimothya/test1-api.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "obrien.timothy.a@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/obrientimothya/test1-api/issues"
+  },
+  "homepage": "https://github.com/obrientimothya/test1-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "express": "^4.17.1",
+    "mocha": "^8.2.1"
+  }
+}

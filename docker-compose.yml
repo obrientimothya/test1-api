@@ -7,6 +7,8 @@ services:
     working_dir: /app
     volumes:
       - ${PWD}:/app:z
+    ports:
+      - "8080:8080"
   api:
     build:
       context: .
@@ -15,4 +17,4 @@ services:
         APP_VERSION: "${APP_VERSION}"
         COMMIT_SHA: "${COMMIT_SHA}"
     ports:
-      - '3000:3000'
+      - "3000:3000"
